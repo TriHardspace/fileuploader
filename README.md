@@ -11,5 +11,5 @@ A simple PHP file uploader service, powered by Bootstrap. This project is curren
 
 
 ## Drawbacks / Todo
--[] Currently, the page that displays the location the file is uploaded at does not have a download button.
--[] Currently, there is no clickable link on the page that displays the file download location, mainly because it was causing issues with PHP.
+- [] Currently, the page that displays the location the file is uploaded at does not have a download button.
+- [] Currently, there is no clickable link on the page that displays the file download location, mainly because it was causing issues with PHP.
