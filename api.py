@@ -37,14 +37,14 @@ def namegen():
 @app.route("/", methods=['POST'])
 def upload():
 	file = request.files['file']
+	if '.' not in file.filename:
+		return render_template('error.html', error='Illegal file extension')
 	if 'file' not in request.files:
 		# check if file part is in request
-		flash('No file part')
-		return redirect(request.url)
+		return render_template('error.html', error='File not in request')
 	if file.filename == '':
 		# checks if file is selected
-		flash('No file selected')
-		return redirect(request.url)
+		return render_template('error.html', error='File not selected')
 	if blacklist_file(file.filename) == 0:
 		filext = file.filename.rsplit('.', 1)[1].lower()
 		filename = namegen()
@@ -52,9 +52,10 @@ def upload():
 		#randomizes and temporarily saves file, will be deleted after upload to s3 bucket
 		print(filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-		s3.put_object(Body=f"./{filename}", Bucket=bucket, Key=filename)
+		s3.upload_file(f'./{filename}', bucket, filename)
 		os.remove(f"./{filename}")
 		return render_template("success.html", filename=filename)
+	if blacklist_file(file.filename) == 1:
+		return render_template('error.html', error='Illegal file extension')
 
-
-app.run(host="0.0.0.0", port=8888)
+app.run(host="127.0.0.1", port=8888)

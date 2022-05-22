@@ -1,11 +1,8 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<div class=\"d-flex justify-content-center\">
-	<h3>Link Shortened!</h3>
-</div>
+<div style="padding: 30px"/>
+	<h3 class="text-center">Link Shortened!</h3>
 <div style=\"padding: 10px\"/>
-<div class=\"d-flex justify-content-center\">
-	<h5>Your file is located at https://uploads.trihard.space/{{ filename }}.</h5>
-</div>
+	<h5 class="text-center">Your file is located at <a href="https://uploads.trihard.space/{{ filename }}">https://uploads.trihard.space/{{ filename }}</a></h5>
 {% endblock %}
