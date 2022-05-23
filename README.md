@@ -1,12 +1,8 @@
 # File-Uploader
-A simple PHP file uploader service. 
+A python script to provide a "simple sharing" style public file uploader service using S3 Compatible storage.
 
 
-
-## How to deploy
-1. Run `python3 api.py`
-
-## Todo
-- [ ] Add Download Button.
-- [ ] Add clickable link.
-- [ ] Fix page design so it looks good on mobile.
+## How to deploy:
+1. Customize the files in /templates to meet your needs.
+2. Run api.py.
+3. Configure a reverse proxy to port 8888 with your intended hostname.
