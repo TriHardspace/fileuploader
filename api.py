@@ -5,7 +5,7 @@ from werkzeug.utils import secure_filename
 import random
 import string
 
-safe_urls = ['uploads.trihard.space', 'trollpepe.com', 'trolling.solutions', 'holocaust.today', 'africans.shop', 'shitpost.domains']
+safe_urls = ['uploads.trihard.space', 'trollpepe.com', 'trolling.solutions', 'holocaust.today', 'africans.shop', 'shitpost.domains', 'stds.gay']
 app = Flask(__name__)
 upload_folder = './'
 app.config['UPLOAD_FOLDER'] = upload_folder
@@ -30,6 +30,7 @@ def blacklist_file(filename):
 
 
 def namegen():
+	# generates filename 
 	file = open('/dev/urandom', 'rb')
 	name = ""
 	for i in range(8):
@@ -101,4 +102,4 @@ def sharex():
 	if blacklist_file(file.filename) == 1:
 		return jsonify(error="Illegal file type")
 
-app.run(host="127.0.0.1:8888")
+app.run(host="127.0.0.1", port=8888)
