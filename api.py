@@ -71,9 +71,9 @@ def upload():
 
 # Uncomment the below code if you wish to host the uploader.html file using flask 
 
-@app.route("/uploader", methods=['GET', 'POST'])
-def render():
- 	return render_template('uploader.html')
+# @app.route("/uploader", methods=['GET', 'POST'])
+# def render():
+# 	return render_template('uploader.html')
 
 
 @app.route("/sharex", methods=['POST'])
