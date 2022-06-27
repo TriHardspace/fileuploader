@@ -19,13 +19,25 @@ navbargen();
 </head>
 
 <div style="padding: 80px"/>
-<form action="https://files.trihard.space/" method="post" enctype="multipart/form-data">
-    <h3 class="text-center"> File Uploader </h3>
-    <div style="padding: 5px"/>
-    <div class="d-flex form-group justify-content-center">
-    <input type="file" id="file" name="file"/>
-    <input type="submit" value="Submit"/>
+<div class="input-group justify-content-center">
+  <form action="/" method="post" enctype="multipart/form-data">
+      <h3 class="text-center"> File Uploader </h3>
+      <div style="padding: 5px"/>    
+      <label for="file"></label>
+      <input type="file" id="file" name="file"/>
+      <select name="Upload Site" id="uploadsite">
+	<option value="uploads.trihard.space" selected>uploads.trihard.space</option>
+	<option value="trollpepe.com">trollpepe.com</option>
+	<option value="africans.shop">africans.shop</option>
+	<option value="trolling.solutions">trolling.solutions</option>
+	<option value="holocaust.today">holocaust.today</option>
+	<option value="shitpost.domains">shitpost.domains</option>
+      </select>
 </div>
-</form>
+
+<div class="input-group justify-content-center">
+      <input type="submit" value="Submit"/>
+  </form>
+</div>
 </body>
 </html>
