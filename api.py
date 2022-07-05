@@ -1,5 +1,6 @@
 from flask import Flask, flash, request, redirect, jsonify, render_template
 import boto3
+from botocore.errorfactory import ClientError
 import os
 from werkzeug.utils import secure_filename
 import random
@@ -29,18 +30,18 @@ def blacklist_file(filename):
 		return 0
 
 
-def namegen():
-	# generates filename 
-	file = open('/dev/urandom', 'rb')
-	name = ""
-	for i in range(8):
-		name=name+str(file.read(i))
-	name = bytes(name, 'utf-8')
-	name = int.from_bytes(name, 'big')
-	name = str(name)
-	name = name[:10]
-	return(name)
+def namegen(ext):
+	name = ''.join(random.choices(string.ascii_uppercase + string.digits + string.ascii_lowercase, k=10))
+	if namechecker(f"{name}.{ext}") == 1:
+		namegen(ext)
+	return name
 
+def namechecker(name):
+	try:
+		s3.head_object(Bucket=bucket, Key=name)
+		return 1
+	except ClientError:
+		return 0	
 
 @app.route("/", methods=['POST'])
 def upload():
@@ -58,10 +59,9 @@ def upload():
 		return render_template('error.html', error='File not selected')
 	if blacklist_file(file.filename) == 0:
 		filext = file.filename.rsplit('.', 1)[1].lower()
-		filename = namegen()
+		filename = namegen(filext)
 		filename = f"{filename}.{filext}"
 		#randomizes and temporarily saves file, will be deleted after upload to s3 bucket
-		print(filename)
 		file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
 		s3.upload_file(f'./{filename}', bucket, filename, Config=config)
 		os.remove(f"./{filename}")
@@ -74,7 +74,7 @@ def upload():
 
 # @app.route("/uploader", methods=['GET', 'POST'])
 # def render():
-# 	return render_template('uploader.html')
+#  	return render_template('uploader.html')
 
 
 @app.route("/sharex", methods=['POST'])
