@@ -74,7 +74,7 @@ def upload():
 
 # @app.route("/uploader", methods=['GET', 'POST'])
 # def render():
-#  	return render_template('uploader.html')
+# 	return render_template('uploader.html')
 
 
 @app.route("/sharex", methods=['POST'])

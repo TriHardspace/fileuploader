@@ -1,14 +1,19 @@
 {% extends 'layout.html' %}
-
 {% block content %}
-<div style="padding: 30px"/>
+<div style="padding: 30px"></div>
         <h3 class="text-center">File Uploaded!</h3>
 </br>
 </br>
 
-<div style=\"padding: 10px\"/>
-        <h5 class="text-center">Your file is located at <a href="https://uploads.trihard.space/{{ filename }}">https://{{ site }}/{{ filename }}</a></h5>
-<div style=\"padding: 50px\"/>
+<input type="hidden" value="https://{{ site }}/{{ filename }}/" id="copyUrl">
+
+<div style="padding: 10px"></div>
+        <h5 class="text-center">Your file is located at <a href="https://{{ site }}/{{ filename }}">https://{{ site }}/{{ filename }}</a></h5>
+<div style="padding: 10px"></div>
+<div style="padding: 15px" class="d-flex justify-content-center"> 
+	<button click=clipcopy() id="copybutton"> Copy URL </button>
+</div>
+
 </br>
 </br>
         <h6 class="text-center">Want to upload another file? <a href=https://trihard.space/uploader>Click here!</a> </h6>
