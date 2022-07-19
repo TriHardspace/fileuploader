@@ -1,4 +1,4 @@
-# File-Uploader
+# File Uploader
 A python script to provide a "simple sharing" style public file uploader service as well as a Sharex API endpoint using S3 Compatible storage.
 
 
