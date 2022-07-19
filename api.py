@@ -102,4 +102,4 @@ def sharex():
 	if blacklist_file(file.filename) == 1:
 		return jsonify(error="Illegal file type")
 
-app.run(host="127.0.0.1", port=8888)
+app.run(host="127.0.0.1", port=8889)
