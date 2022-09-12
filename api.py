@@ -6,7 +6,7 @@ from werkzeug.utils import secure_filename
 import random
 import string
 
-safe_urls = ['uploads.trihard.space', 'trollpepe.com', 'trolling.solutions', 'holocaust.today', 'africans.shop', 'shitpost.domains', 'stds.gay']
+safe_urls = ['uploads.trihard.space', 'trollpepe.com', 'trolling.solutions', 'holocaust.today', 'africans.shop', 'shitpost.domains', 'stds.gay', 't3w7yaj4gqjigsx6kwl5kvd66qntc6xpmq532h4tay2mbvn4654olbqd.onion']
 app = Flask(__name__)
 upload_folder = './'
 app.config['UPLOAD_FOLDER'] = upload_folder
